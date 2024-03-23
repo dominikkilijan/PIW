@@ -191,6 +191,13 @@ body{
     padding: 1rem;
 }
 
+.offer-image{
+    height: 300px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
 .hero-cards>.card-image:nth-child(1){
     background-image: url(./Assets/heroSmall1.jpeg);
 }
@@ -208,6 +215,12 @@ body{
     justify-content: center;
     align-items: center;
     column-gap: 8px;
+}
+
+.round-chip {
+    padding: 12px 12px;
+    border-radius: var(--radius-large);
+    cursor: pointer;
 }
 
 .browse-section{
@@ -309,6 +322,25 @@ body{
 .hidden{
     display: none;
 }
+
+.welcome {
+    padding-left: 64px;
+}
+
+.view-offer-button{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    border-radius: var(--radius-medium);
+    background-color: var(--primary-light);
+    outline: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+}
+
+
 
 @media screen and (max-width:768px) {
 
