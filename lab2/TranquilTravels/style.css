@@ -77,6 +77,11 @@ body{
     list-style: none;
 }
 
+.rightside-buttons {
+    margin-top: 8px;
+    justify-content: flex-end;
+}
+
 .nav-link {
     text-decoration: none;
 }
@@ -280,6 +285,25 @@ body{
     column-gap: 8px;
 }
 
+.close-button {
+    align-self: flex-end;
+    padding: 0px 0px;
+    border-radius: var(--radius-large);
+    cursor: pointer;
+}
+
+.contact-form {
+    height: 90%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.contact-input {
+    border-radius: var(--radius-small);
+    width: 100%;
+    height: 100%;
+}
+
 .round-chip {
     padding: 12px 12px;
     border-radius: var(--radius-large);
@@ -427,11 +451,17 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 
-    background-color: var(--white);
+    padding: 16px 16px;
+    height: 456px;
+    width: 780px;
+    border-radius: var(--radius-medium);
+    background-color: var(--neutral);
     border: none;
-    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
-
 
 @media screen and (max-width:768px) {
 
