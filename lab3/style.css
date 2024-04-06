@@ -1,0 +1,225 @@
+:root {
+    --primary-dark: #3f6131;
+    --primary-medium: #4f8e36;
+    --primary-light: #adc93e;
+    --neutral: #dae4ac;
+    --greyed-out: #b9c684;
+    --hover: #48531b;
+    --white: #FFFFFF;
+
+    --radius-large: 64px;
+    --radius-medium: 32px;
+    --radius-small:16px;
+
+    --title-large: 72px;
+    --title-medium: 32px;
+
+    --copy-large: 18px;
+    --copy-small: 16px;
+
+    --title-font: "Italiana", sans-serif;
+    --transition: all 0.3s ease-in-out;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--copy-small);
+    color: var(--primary-light);
+}
+
+
+body{
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "wdth" 100,
+      "GRAD" 0,
+      "XOPQ" 96,
+      "XTRA" 468,
+      "YOPQ" 79,
+      "YTAS" 750,
+      "YTDE" -203,
+      "YTFI" 738,
+      "YTLC" 514,
+      "YTUC" 712;
+
+}
+
+.button{
+    padding: 8px 24px;
+    border: none;
+    text-decoration-line: none;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    outline: none;
+    cursor: pointer;
+    border-radius: var(--radius-small);
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+
+.button:active {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.x-button {
+    text-decoration-line: none;
+    padding: 0px 8px;
+}
+
+.undo-button {
+    background-color: transparent;
+    color: var(--primary-light);
+    padding: 8px 24px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.undo-button:hover {
+    color: var(--primary-medium);
+}
+
+.undo-button:active {
+    color: var(--primary-light);
+}
+
+.title-large{
+    font-family: var(--title-font);
+    font-size: var(--title-large);
+    user-select: none;
+    
+}
+
+.background {
+    background-color: var(--primary-dark);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.todo-sheet {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neutral);
+    width: 40%;
+    min-height: 40vh;
+    border-radius: var(--radius-small);
+    padding: 32px 24px;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+}
+
+.add-tasks {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 0px;
+}
+
+.task-input {
+    width: 80%;
+    border-radius: var(--radius-small);
+    border: none;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: var(--primary-dark);
+
+}
+
+ul li {
+    list-style: none;
+    color: var(--primary-dark);
+    font-size: 24px;
+    cursor: pointer;
+    padding-left: 16px;
+    padding-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.task-list {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.done {
+    text-decoration-line: line-through;
+    color: var(--greyed-out);
+}
+
+.modal{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 16px 16px;
+    height: 40vh;
+    width: 35vw;
+    border-radius: var(--radius-medium);
+    background-color: var(--greyed-out);
+    color: var(--primary-dark);
+    border: none;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.modal-question {
+    font-size: 32px;
+    color: var(--primary-dark);
+}
+
+.modal-task-content {
+    font-size: 24px;
+    color: var(--primary-dark);
+}
+
+.modal-decision-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modal-decision-button {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    margin: 8px;
+}
+
+.modal-decision-button:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.modal-decision-button:active {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+
+.task-list li.done .x-button {
+    text-decoration: none; /* Wyłączenie przekreślenia dla przycisku "x-button" tylko wtedy, gdy element "li" ma klasę "done" */
+  }

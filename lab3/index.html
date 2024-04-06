@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIWo</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Roboto+Flex:opsz,wght@8..144,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="background">
+        <p class="title-large">Todo list</p>
+            <div id="todo-sheet " class="todo-sheet">
+                <div class="add-tasks">
+                    <input type="text" id="task-input" class="task-input">
+                    <button class="button">Add</button>
+                </div>
+                <button id="undo-button" class="undo-button">
+                    undo
+                </button>
+                <ul id="task-list" class="task-list">
+                    <li class="done">
+                        task1
+                        <button id="x-button" class="button x-button">&#x2715;</button>
+                    </li>
+                    <li>
+                        task2
+                        <button id="x-button" class="button x-button">&#x2715;</button>
+                    </li>
+                    <li>
+                        task3
+                        <button id="x-button" class="button x-button">&#x2715;</button>
+                    </li>
+                </ul>
+                
+            </div>
+    </section>
+    <!-- <dialog id="modal" class="modal">
+        <p class="modal-question">Czy na pewno chcesz usunąć zadanie o treści:</p>
+        <p id="modal-task-content" class="modal-task-content">[tresc zadania]</p>
+        <div class="modal-decision-buttons">
+            <button class="button modal-decision-button" >Yes </button>
+            <button class="button modal-decision-button" >Cancel </button>
+        </div>
+    </dialog> -->
+</body>
+</html>
