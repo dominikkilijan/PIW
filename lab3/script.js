@@ -10,35 +10,34 @@ let deletedTask = "";
 function addTask(event, undoneTask) {
     event.preventDefault();
 
-    if (undoneTask
-     === "" && taskInput.value === "") {
+    if (undoneTask === "" && taskInput.value === "") {
         alert("You must write your task first");
     }
     else {
         let li = document.createElement("li");
         
-        if (undoneTask
-         === "") {
-            console.log("taskInput.value = " + taskInput.value);
+        if (undoneTask === "") {
             li.innerHTML = taskInput.value;
         }
         else {
-            console.log("deletedTask = " + undoneTask
-    );
-            li.innerHTML = undoneTask
-        ;
-            undoneTask
-         = "";
+            li.innerHTML = undoneTask;
+            undoneTask = "";
             undoButton.classList.add("invisible");
         }
+
+        let dateContainer = document.createElement("span");
+        dateContainer.classList.add("task-date");
+        dateContainer.innerHTML = "";
         
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("button", "x-button");
         deleteButton.innerHTML = "&#x2715;";
         deleteButton.onclick = (event) => deleteTask(event, li);
         
-        taskList.appendChild(li);
+        li.appendChild(dateContainer);
         li.appendChild(deleteButton);
+        
+        taskList.appendChild(li);
         
         taskInput.value = '';
     }
@@ -86,8 +85,29 @@ function undoDelete(event) {
 function trimTask(taskToTrim) {
     if (taskToTrim != null) {
         let task = taskToTrim.innerText.trim();
-        let trimmedTask = task.slice(0, -1);
-        console.log("trimmedTask = " + trimmedTask);
-        return trimmedTask;
+        let trimmedTask = task.slice(0, -1); // usuwanie x
+        task = trimmedTask.trim();
+
+        if (taskToTrim.classList.contains("done")) {
+            let lastNewLineIndex = task.lastIndexOf("\n");
+            trimmedTask = task.slice(0, lastNewLineIndex); // usuwanie daty
+            task = trimmedTask.trim();
+        }
+        return task;
     }
 }
+
+function toggleTaskCompleted(event) {
+    const listItem = event.target.closest("li");
+    listItem.classList.toggle("done");
+
+    const dateSpan = listItem.querySelector(".task-date");
+    if (listItem.classList.contains("done")) {
+        const currentDate = new Date().toLocaleDateString();
+        dateSpan.textContent = currentDate;
+    } else {
+        dateSpan.textContent = "";
+    }
+}
+
+taskList.addEventListener("click", toggleTaskCompleted);
