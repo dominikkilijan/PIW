@@ -157,10 +157,8 @@ body{
 }
 
 ul li {
-    list-style: none;
-    color: var(--primary-dark);
+    list-style: none;    
     font-size: 24px;
-    cursor: pointer;
     padding-left: 16px;
     padding-bottom: 8px;
     display: grid;
@@ -188,7 +186,6 @@ ul li {
     height: 40vh;
     width: 35vw;
     border-radius: var(--radius-medium);
-    /* background-color: var(--greyed-out); */
     background-color: var(--neutral);
     color: var(--primary-dark);
     border: none;
@@ -256,6 +253,14 @@ ul li {
 
 .task-date {
     text-decoration: none;
-    padding-top: 8px;
-    font-size: 16px;
+    padding-top: 0px;
+    font-size: 20px;
+}
+
+.task-content {
+    font-size: 20px;
+}
+
+.dark-text {
+    color: var(--primary-dark);
 }

@@ -1,4 +1,5 @@
-"use strict"
+"use strict";
+// przepraszam jak coś jest dalej nie w stylu. Nie byłem na ostatnich zajęciach i uczyłem się z internetu. Przyjdę na zajęcia z innej grupy jeśli jest taka możliwość
 
 const form = document.getElementById("todo-sheet");
 const taskInput = document.getElementById("task-input");
@@ -15,16 +16,18 @@ function addTask(event, undoneTask) {
     }
     else {
         let li = document.createElement("li");
+        let taskContent = document.createElement("div");
+        taskContent.classList.add("task-content", "dark-text");
         
         if (undoneTask === "") {
-            li.innerHTML = taskInput.value;
+            taskContent.innerHTML = taskInput.value;
         }
         else {
-            li.innerHTML = undoneTask;
+            taskContent.innerHTML = undoneTask;
             undoneTask = "";
             undoButton.classList.add("invisible");
         }
-
+        
         let dateContainer = document.createElement("span");
         dateContainer.classList.add("task-date");
         dateContainer.innerHTML = "";
@@ -32,8 +35,9 @@ function addTask(event, undoneTask) {
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("button", "x-button");
         deleteButton.innerHTML = "&#x2715;";
-        deleteButton.onclick = (event) => deleteTask(event, li);
+        deleteButton.onclick = (event) => deleteTask(event, taskContent, li);
         
+        li.appendChild(taskContent);
         li.appendChild(dateContainer);
         li.appendChild(deleteButton);
         
@@ -43,7 +47,7 @@ function addTask(event, undoneTask) {
     }
 }
 
-function deleteTask(event, taskElement) {
+function deleteTask(event, taskElement, li) {
     event.preventDefault();
     event.stopPropagation();
 
@@ -68,7 +72,7 @@ function deleteTask(event, taskElement) {
         modal.classList.add("hidden");
         deletedTask = trimTask(taskElement);
         console.log("deleted task = " + deletedTask);
-        taskElement.remove();
+        li.remove();
         taskElement = "";
         undoButton.classList.remove("invisible");
 
@@ -83,26 +87,19 @@ function undoDelete(event) {
 }
 
 function trimTask(taskToTrim) {
-    if (taskToTrim != null) {
+    if (taskToTrim !== "") {
         let task = taskToTrim.innerText.trim();
-        let trimmedTask = task.slice(0, -1); // usuwanie x
-        task = trimmedTask.trim();
-
-        if (taskToTrim.classList.contains("done")) {
-            let lastNewLineIndex = task.lastIndexOf("\n");
-            trimmedTask = task.slice(0, lastNewLineIndex); // usuwanie daty
-            task = trimmedTask.trim();
-        }
         return task;
     }
 }
 
 function toggleTaskCompleted(event) {
-    const listItem = event.target.closest("li");
-    listItem.classList.toggle("done");
+    const taskContent = event.target.closest("li").querySelector(".task-content");
+    taskContent.classList.toggle("done");
+    taskContent.classList.toggle("dark-text");
 
-    const dateSpan = listItem.querySelector(".task-date");
-    if (listItem.classList.contains("done")) {
+    const dateSpan = event.target.closest("li").querySelector(".task-date");
+    if (taskContent.classList.contains("done")) {
         const currentDate = new Date().toLocaleDateString();
         dateSpan.textContent = currentDate;
     } else {
