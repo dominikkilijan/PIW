@@ -13,16 +13,16 @@
 <body>
     <section class="background">
         <p class="title-large">Todo list</p>
-            <div id="todo-sheet " class="todo-sheet">
+            <form id="todo-sheet " class="todo-sheet">
                 <div class="add-tasks">
                     <input type="text" id="task-input" class="task-input">
-                    <button class="button">Add</button>
+                    <button onclick="addTask(event)" class="button">Add</button>
                 </div>
-                <button id="undo-button" class="undo-button">
+                <button onclick="undoDelete()" id="undo-button" class="undo-button invisible">
                     undo
                 </button>
                 <ul id="task-list" class="task-list">
-                    <li class="done">
+                    <!-- <li class="done">
                         task1
                         <button id="x-button" class="button x-button">&#x2715;</button>
                     </li>
@@ -33,18 +33,19 @@
                     <li>
                         task3
                         <button id="x-button" class="button x-button">&#x2715;</button>
-                    </li>
+                    </li> -->
                 </ul>
                 
-            </div>
+            </form>
     </section>
-    <!-- <dialog id="modal" class="modal">
+    <dialog id="modal" class="modal hidden">
         <p class="modal-question">Czy na pewno chcesz usunąć zadanie o treści:</p>
-        <p id="modal-task-content" class="modal-task-content">[tresc zadania]</p>
+        <p id="modal-task-content" class="modal-task-content"></p>
         <div class="modal-decision-buttons">
-            <button class="button modal-decision-button" >Yes </button>
-            <button class="button modal-decision-button" >Cancel </button>
+            <button id="modalYesButton" class="button modal-decision-button" >Yes </button>
+            <button id="modalCancelButton" class="button modal-decision-button" >Cancel </button>
         </div>
-    </dialog> -->
+    </dialog>
+    <script src="script.js"></script>
 </body>
 </html>

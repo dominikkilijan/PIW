@@ -179,13 +179,19 @@ ul li {
     height: 40vh;
     width: 35vw;
     border-radius: var(--radius-medium);
-    background-color: var(--greyed-out);
+    /* background-color: var(--greyed-out); */
+    background-color: var(--neutral);
     color: var(--primary-dark);
     border: none;
     
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.modal::backdrop {
+    background-color: var(--primary-dark);
+    opacity: 0.75;
 }
 
 .modal-question {
@@ -220,6 +226,19 @@ ul li {
     color: var(--primary-light);
 }
 
-.task-list li.done .x-button {
-    text-decoration: none; /* Wyłączenie przekreślenia dla przycisku "x-button" tylko wtedy, gdy element "li" ma klasę "done" */
-  }
+.invisible {
+    color: var(--neutral);
+    cursor: default;
+}
+
+.invisible:hover {
+    color: var(--neutral);
+}
+
+.invisible:active { 
+    color: var(--neutral);
+}
+
+.hidden {
+    display: none;
+}
