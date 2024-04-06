@@ -1,3 +1,5 @@
+"use strict"
+
 const form = document.getElementById("todo-sheet");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
@@ -5,22 +7,28 @@ const undoButton = document.getElementById("undo-button");
 
 let deletedTask = "";
 
-function addTask(event) {
+function addTask(event, undoneTask) {
     event.preventDefault();
 
-    if (taskInput.value === "" && deletedTask === "") {
+    if (undoneTask
+     === "" && taskInput.value === "") {
         alert("You must write your task first");
     }
     else {
         let li = document.createElement("li");
-        if (deletedTask === "") {
+        
+        if (undoneTask
+         === "") {
             console.log("taskInput.value = " + taskInput.value);
             li.innerHTML = taskInput.value;
         }
         else {
-            console.log(deleteTask.innerHTML);
-            li.innerHTML = deletedTask.innerHTML;
-            deletedTask = "";
+            console.log("deletedTask = " + undoneTask
+    );
+            li.innerHTML = undoneTask
+        ;
+            undoneTask
+         = "";
             undoButton.classList.add("invisible");
         }
         
@@ -69,9 +77,9 @@ function deleteTask(event, taskElement) {
 }
 
 function undoDelete(event) {
-    if (deletedTask != null) {
+    if (deletedTask !== "") {
         console.log("task to undo = " + deletedTask);
-        addTask(event);
+        addTask(event, deletedTask);
     }
 }
 
