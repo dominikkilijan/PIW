@@ -1,31 +1,27 @@
-// App.js
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { RouterProvider,  Outlet,  Route, createBrowserRouter, createRoutesFromElements, NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import Navbar from './NavBar';
-import BrowseSection from './BrowseSection';
+import Navbar from './Components/NavBar';
+import HotelPage from './Pages/HotelPage';
+import Browse from './Pages/Browse';
+import Home from './Pages/Home';
+import SignUp from './Pages/SignUp';
 
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<AppLayout />}>
-      {/* <Route path="" element={<Home />} />
-      <Route path="new" element={<New />} /> */}
-    </Route>
-  )
-);
-
-
-function AppLayout() {
+function App() {
   return (
-    <>
-    <Navbar/>
-    <BrowseSection/>
-    </>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/hotels/:id" element={<HotelPage />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/rent-with-us" element={<SignUp />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
-const App = () => <RouterProvider router={router} />
 
 export default App;

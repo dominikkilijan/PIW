@@ -44,6 +44,16 @@ import cards4 from './Assets/cards4.jpg';
       price: "115€/room",
       image: cards4,
       liked: true
+    },
+    {
+      id: 5,
+      location: "Sienna",
+      name: "Oasis Resort2",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus quis felis a venenatis. Suspendisse accumsan aliquam lorem, sit amet ultricies justo tristique nec.",
+      rating: "★★★★★",
+      price: "115€/room",
+      image: cards4,
+      liked: true
     }
   ];
   
