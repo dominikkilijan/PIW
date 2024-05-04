@@ -1,4 +1,4 @@
-import Navbar from "../Components/NavBar";
+import BrowseSection from "../Components/BrowseSection";
 import WelcomeSection from "../Components/WelcomeSection";
 
 const Home = () => {
@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <>
         <WelcomeSection/>
+        <BrowseSection/>
     </>
   )
 }

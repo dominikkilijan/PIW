@@ -63,6 +63,7 @@ body{
   align-items: center;
   background-color: var(--white) ;
   position: fixed;
+  text-decoration: none;
 }
 
 .logo{
@@ -77,6 +78,7 @@ body{
   justify-content: center;
   align-items: center;
   list-style: none;
+  text-decoration: none;
 }
 
 .rightside-buttons {
@@ -84,13 +86,12 @@ body{
   justify-content: flex-end;
 }
 
-.nav-link {
-  text-decoration: none;
-}
+
 
 .nav-link:hover{
   color: var(--hover);
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .button{
@@ -354,10 +355,7 @@ body{
   border-radius: var(--radius-medium);
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  /* row-gap: 24px; */
-  flex-basis: calc(25% - 10px); /* Szerokość karty hotelu, odejmując marginesy */
-  /* margin-right: 20px; Odstęp między kartami */
+  flex-basis: calc(25% - 10px);
 }
 
 
@@ -386,7 +384,7 @@ body{
   flex-basis: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px; /* Dodatkowy odstęp między wierszami */
+  margin-bottom: 20px;
 }
 
 .card-image2 {
@@ -471,6 +469,10 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.nav-link {
+  text-decoration: none;
 }
 
 @media screen and (max-width:768px) {
