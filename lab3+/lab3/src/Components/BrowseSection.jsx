@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+// src/Components/BrowseSection.jsx
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../init'; // Adjust the path according to your project structure
 import HeartLiked from '../Assets/HeartLiked.svg';
 import HeartUnliked from '../Assets/HeartUnliked.svg';
 import Arrow from '../Assets/Arrow.svg';
-import hotelsData from '../HotelsData';
 
 function BrowseSection() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [hotelsData, setHotelsData] = useState([]);
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      const querySnapshot = await getDocs(collection(db, "hotels"));
+      const hotelsList = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setHotelsData(hotelsList);
+    };
+
+    fetchHotels();
+  }, []);
 
   const chunkArray = (arr, chunkSize) => {
     const chunks = [];
