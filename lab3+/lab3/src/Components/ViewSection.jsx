@@ -6,6 +6,7 @@ import HeartLiked from '../Assets/HeartLiked.svg';
 import HeartUnliked from '../Assets/HeartUnliked.svg';
 import Mail from '../Assets/Mail.svg';
 import Edit from '../Assets/Edit.svg';
+import ContactModal from './ContactModal';
 
 const likedHotelsReducer = (state, action) => {
   switch (action.type) {
@@ -27,6 +28,7 @@ function ViewSection() {
   const [hotel, setHotel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     location: '',
@@ -89,6 +91,14 @@ function ViewSection() {
     dispatch({ type: 'TOGGLE_LIKE', payload: hotelId });
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -98,7 +108,7 @@ function ViewSection() {
   }
 
   return (
-    <section id="view" className="view-section">
+    <section id="view" className={`view-section ${isModalOpen ? 'modal-open' : ''}`}>
       <p className="title-large welcome">{hotel.name}</p>
       <div className="grid">
         <div style={{ backgroundImage: `url(${hotel.image})` }} className="view-image-container">
@@ -163,7 +173,7 @@ function ViewSection() {
             <p>{isEditing ? "Cancel" : "Edit"}</p>
             <img src={Edit} alt="Edit" />
           </div>
-          <div className="contact-button">
+          <div className="contact-button" onClick={openModal}>
             <p>Contact</p>
             <img src={Mail} alt="Mail" />
           </div>
@@ -173,6 +183,10 @@ function ViewSection() {
           </div>
         </article>
       </div>
+
+      {isModalOpen && (
+        <ContactModal onClose={closeModal} hotelName={hotel.name} />
+      )}
     </section>
   );
 }

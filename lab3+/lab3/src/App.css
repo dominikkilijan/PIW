@@ -472,6 +472,51 @@ body{
   justify-content: space-evenly;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(102, 128, 0, 0.5); /* Półprzeźroczysty kolor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.close-button {
+  align-self: flex-end;
+  padding: 0px 0px;
+  border-radius: var(--radius-large);
+  cursor: pointer;
+}
+
+.contact-form {
+  height: 90%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.contact-input {
+  padding: 8px 8px 8px 8px;
+  border-radius: var(--radius-small);
+  width: 100%;
+  height: 100%;
+}
+
+.rightside-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.button, .contact-button {
+  padding: 8px 24px;
+  border-radius: var(--radius-large);
+  cursor: pointer;
+}
+
+
 .nav-link {
   text-decoration: none;
 }
