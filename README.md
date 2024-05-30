@@ -5,4 +5,4 @@ Dominik Kilijan
 
 wtorek 13:15
 
-https://piw-hotel.web.app
+https://hotel-piw.web.app
