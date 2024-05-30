@@ -1,4 +1,3 @@
-// HotelsData.js
 import cards1 from './Assets/cards1.jpg';
 import cards2 from './Assets/cards2.jpg';
 import cards3 from './Assets/cards3.jpg';

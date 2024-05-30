@@ -1,10 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../init';
+import HeartLiked from '../Assets/HeartLiked.svg';
 import HeartUnliked from '../Assets/HeartUnliked.svg';
 import Mail from '../Assets/Mail.svg';
 import Edit from '../Assets/Edit.svg';
+
+const likedHotelsReducer = (state, action) => {
+  switch (action.type) {
+    case 'TOGGLE_LIKE':
+      const updatedState = state.includes(action.payload)
+        ? state.filter(id => id !== action.payload)
+        : [...state, action.payload];
+      localStorage.setItem('likedHotels', JSON.stringify(updatedState));
+      return updatedState;
+    case 'LOAD_LIKES':
+      return action.payload || [];
+    default:
+      return state;
+  }
+};
 
 function ViewSection() {
   const { id } = useParams();
@@ -16,6 +32,10 @@ function ViewSection() {
     location: '',
     price: '',
     description: ''
+  });
+  const [likedHotels, dispatch] = useReducer(likedHotelsReducer, [], () => {
+    const savedLikes = localStorage.getItem('likedHotels');
+    return savedLikes ? JSON.parse(savedLikes) : [];
   });
 
   useEffect(() => {
@@ -65,6 +85,10 @@ function ViewSection() {
     setIsEditing(false);
   };
 
+  const handleToggleLike = (hotelId) => {
+    dispatch({ type: 'TOGGLE_LIKE', payload: hotelId });
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -78,7 +102,13 @@ function ViewSection() {
       <p className="title-large welcome">{hotel.name}</p>
       <div className="grid">
         <div style={{ backgroundImage: `url(${hotel.image})` }} className="view-image-container">
-          <p className="chip view-chip" style={{ marginBottom: '20px' }}> Add to favorites <img className="clickable" src={HeartUnliked} alt="HeartUnliked" /> </p>
+          <p
+            className="chip view-chip clickable"
+            style={{ marginBottom: '20px' }}
+            onClick={() => handleToggleLike(hotel.id)}
+          >
+            Add to favorites <img src={likedHotels.includes(hotel.id) ? HeartLiked : HeartUnliked} alt="Heart" />
+          </p>
         </div>
         <article className="view-details">
           {isEditing ? (
