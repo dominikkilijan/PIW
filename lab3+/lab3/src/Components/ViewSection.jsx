@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../init'; // Adjust the path according to your project structure
 import HeartUnliked from '../Assets/HeartUnliked.svg';
 import Mail from '../Assets/Mail.svg';
-import hotelsData from '../HotelsData';
-import { useEffect } from 'react';
+import Edit from '../Assets/Edit.svg';
 
 function ViewSection() {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Przesuń widok na górę strony po zamontowaniu komponentu
-  }, []);
-
   const { id } = useParams();
+  const [hotel, setHotel] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const findHotelById = (id) => {
-    return hotelsData.find((hotel) => hotel.id === parseInt(id));
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when the component mounts
 
-  const hotel = findHotelById(id);
+    const fetchHotel = async () => {
+      const hotelRef = doc(db, "hotels", id);
+      const hotelSnap = await getDoc(hotelRef);
+
+      if (hotelSnap.exists()) {
+        setHotel({ ...hotelSnap.data(), id: hotelSnap.id });
+      } else {
+        console.log("No such document!");
+      }
+      setLoading(false);
+    };
+
+    fetchHotel();
+  }, [id]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   if (!hotel) {
     return <p>Hotel not found</p>;
@@ -40,6 +55,10 @@ function ViewSection() {
           <div className="contact-button">
             <p>Contact</p>
             <img src={Mail} alt="Mail" />
+          </div>
+          <div className="contact-button">
+            <p>Edit</p>
+            <img src={Edit} alt="Edit" />
           </div>
           <div className="view-cards">
             <img className="view-image" src={hotel.image} alt={hotel.name} />
