@@ -6,6 +6,7 @@ import HotelPage from './Pages/HotelPage';
 import Browse from './Pages/Browse';
 import Home from './Pages/Home';
 import SignUp from './Pages/SignUp';
+import Favorites from './Pages/Favorites';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/browse" element={<Browse />} />
           <Route path="/hotels/:id" element={<HotelPage />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/rent-with-us" element={<SignUp />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </div>
     </Router>

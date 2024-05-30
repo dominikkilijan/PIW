@@ -476,6 +476,44 @@ body{
   text-decoration: none;
 }
 
+.input-field {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var(--primary-dark);
+  border-radius: var(--radius-small);
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  border: 1px solid var(--hover);
+  outline: none;
+  box-shadow: 0 0 5px var(--hover);
+}
+
+textarea.input-field {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submit-button:hover {
+  background-color: var(--hover);
+  color: var(--neutral);
+}
+
+
 @media screen and (max-width:768px) {
 
   .hidden{

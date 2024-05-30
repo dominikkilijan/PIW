@@ -6,7 +6,7 @@ import HeartLiked from '../Assets/HeartLiked.svg';
 import HeartUnliked from '../Assets/HeartUnliked.svg';
 import Arrow from '../Assets/Arrow.svg';
 
-function BrowseSection() {
+function FavoritesSection() {
   const [searchQuery, setSearchQuery] = useState('');
   const [hotelsData, setHotelsData] = useState([]);
 
@@ -37,7 +37,7 @@ function BrowseSection() {
   return (
     <>
       <section id="browse" className="browse-section">
-        <p className="title-middle">Explore the hotels:</p>
+        <p className="title-middle">Favorites:</p>
         <input
           className="searchbar"
           placeholder="Search by hotel name, place etc."
@@ -78,4 +78,4 @@ function BrowseSection() {
   );
 }
 
-export default BrowseSection;
+export default FavoritesSection;
